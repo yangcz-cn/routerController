@@ -583,8 +583,8 @@ export default {
     },
     methods:{
         init(){
-            this.roteName = this.VueCookies.get('roteName');
-            this.username = this.VueCookies.get('username');
+            this.roteName = this.VueCookies.get('roteName').length>6?this.VueCookies.get('roteName').substr(0,6)+'...':this.VueCookies.get('roteName');
+            this.username = this.VueCookies.get('username').length>6?this.VueCookies.get('username').substr(0,6)+'...':this.VueCookies.get('username');
             if(!this.roteName||!this.username) {
 
                 this.outLogin();
