@@ -4,13 +4,23 @@ var session = require('express-session');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var config = require('./config/dev.config.js');
 const Tools = require('./tools/Tools.js');
 
 
 
 
 
+
 var app = express();
+
+/*
+*占时没用
+if(config.isGzip){
+	var compression = require('compression');//gzip 压缩
+	// compress responses gzip 压缩
+	app.use(compression());
+}*/
 
 //use session
 app.use(session({
@@ -19,6 +29,8 @@ app.use(session({
 	resave:true,
 	saveUninitialized:true
 }));
+
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
