@@ -10,6 +10,7 @@ import VueCookies from 'vue-cookies';
 import Common from './tools/Common';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import ajax from './tools/ajax';
 
 
 Vue.use(VueCookies);
@@ -20,6 +21,7 @@ Vue.prototype.Http = Http;
 Vue.prototype.Storage = Storage;
 Vue.prototype.Common = Common;
 Vue.prototype.VueCookies = VueCookies;
+Vue.prototype.ajax = ajax.ajax;
 
 
 Vue.config.productionTip = false;
@@ -27,25 +29,25 @@ Vue.config.productionTip = false;
 let juris = JSON.parse(VueCookies.get('juris'));
 /* eslint-disable no-new */
 router.beforeEach((to, from, next) => {
-  config.globalRouters.find(path =>{
-    if(to.path == path ){
-        next();
+  config.globalRouters.find(path => {
+    if (to.path == path) {
+      next();
     }
   });
-  if(!juris) juris = JSON.parse(VueCookies.get('juris'));
-  let username = VueCookies.get('username'),token = VueCookies.get('token');
-  if(username && token && juris && juris.length > 0){
+  if (!juris) juris = JSON.parse(VueCookies.get('juris'));
+  let username = VueCookies.get('username'), token = VueCookies.get('token');
+  if (username && token && juris && juris.length > 0) {
     Http.token = token;
     //Http.post('/user/check',{username:username}).then(res=>{if(!res.success) next({path:'login'});});
     next();
-  }else {
-    console.error(username,token,juris);
-    next({path:'login'})
+  } else {
+    console.error(username, token, juris);
+    next({ path: 'login' })
   }
   next();
 });
 
-Common.writeRouter(juris,router);
+Common.writeRouter(juris, router);
 router.addRoutes(router.options.routes);
 new Vue({
   el: '#app',

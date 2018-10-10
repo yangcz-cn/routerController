@@ -9,33 +9,34 @@ import min from '@/view/min'
 Vue.use(Router);
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
       name: '管理中心',
       component: min,
-      children:[
+      children: [
         //{
         //  path:'/admin',
         //  name:'管理中心',
         //  component:Common.require('/index.vue'),
         //}
       ]
-  },
-  {
-    path:'*',
-    name:'not find',
-    component:error404
-  },
-  {
-      path:'/error',
-      name:'Error:500',
-      component:error500
-  },
+    },
     {
-      path:'/login',
-      name:'登录',
-      component:login
+      path: '*',
+      name: 'not find',
+      component: error404
+    },
+    {
+      path: '/error',
+      name: 'Error:500',
+      component: error500
+    },
+    {
+      path: '/login',
+      name: '登录',
+      component: login
     },
   ]
 })

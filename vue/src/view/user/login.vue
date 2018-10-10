@@ -24,10 +24,11 @@
           <form>
             <h4 class="no-margins">登录：</h4>
             <p class="m-t-md">登录到H+后台主题UI框架</p>
-            <input type="text" class="form-control uname" v-model="username"   placeholder="用户名/手机号" />
-            <input type="password" class="form-control pword m-b" v-model="password"  placeholder="密码" />
+            <input type="text" class="form-control uname" v-model="username" placeholder="用户名/手机号" />
+            <input type="password" class="form-control pword m-b" v-model="password" placeholder="密码" />
             <!--<a href="">忘记密码了？</a>-->
             <a class="btn btn-success btn-block" @click="login">登录</a>
+            <a class="btn btn-success btn-block" @click="loginTwo">登录2</a>
           </form>
         </div>
       </div>
@@ -107,6 +108,33 @@ export default {
                 }).catch(err=>{
 
                 });*/
+    },
+    loginTwo() {
+      this.ajax(
+        "登录",
+        {
+          username: this.username,
+          password: this.password
+        },
+        res => {
+          if (res.success) {
+            this.Storage.set("username", res.data.username);
+            this.Storage.set("token", res.data.token);
+            this.Common.writeRouter(res.data.juris, this.$router);
+            this.$router.addRoutes(this.$router.options.routes);
+            this.$message({
+              type: "success",
+              message: "登录成功"
+            });
+            setTimeout(this.$router.push({ path: "/index" }), 500);
+          } else {
+            this.$message({
+              type: "error",
+              message: res.message || res.msg
+            });
+          }
+        }
+      );
     }
   }
 };
