@@ -138,7 +138,7 @@
                         </li>
                     </ul>
                 </div>
-                <a href="javacript:;" @click="outLogin" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
+                <a href="javascript:;" @click="outLogin" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
             </div>
             <div class="row J_mainContent" id="content-main">
                 <router-view/>
@@ -607,7 +607,7 @@ export default {
             this.$cookies.remove('token');
             this.Common.writeRouter([],this.$router);
             this.$router.addRoutes([]);
-            this.$router.push('/');
+            this.$router.push('/login');
         },
         clickMenu(k){
             this.checkMenu.splice(k,1,!this.checkMenu[k]);

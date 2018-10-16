@@ -4,7 +4,7 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import config from './tools/config';
-import Http from './tools/Http';
+//import Http from './tools/Http';
 import Storage from './tools/Storage';
 import VueCookies from 'vue-cookies';
 import Common from './tools/Common';
@@ -17,7 +17,7 @@ Vue.use(VueCookies);
 Vue.use(ElementUI);
 
 Vue.prototype.config = config;
-Vue.prototype.Http = Http;
+//Vue.prototype.Http = Http;
 Vue.prototype.Storage = Storage;
 Vue.prototype.Common = Common;
 Vue.prototype.VueCookies = VueCookies;
@@ -37,7 +37,7 @@ router.beforeEach((to, from, next) => {
   if (!juris) juris = JSON.parse(VueCookies.get('juris'));
   let username = VueCookies.get('username'), token = VueCookies.get('token');
   if (username && token && juris && juris.length > 0) {
-    Http.token = token;
+    //Http.token = token;
     //Http.post('/user/check',{username:username}).then(res=>{if(!res.success) next({path:'login'});});
     next();
   } else {

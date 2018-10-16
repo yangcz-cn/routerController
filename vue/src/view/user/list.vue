@@ -128,7 +128,45 @@
             },
             getUserList(r = false){
                 this.userListLoading = true;
-                this.Http.post('user/list',{
+				this.ajax(
+					"用户列表",
+					{
+					   state:this.state,
+						page:this.page.pageNum,
+						pageSize:this.page.pageSize,
+						sJurisTitle:this.search.name
+					},
+					msg => {
+					   if(msg.success){
+							if(r){
+								this.$message({
+									message: r,
+									type: 'success',
+									showClose: true,
+									center: true,
+									duration:1000
+								});
+							}
+							this.userList = msg.data.rows;
+							this.userListLoading = false;
+							this.page.total = msg.data.count;
+							if(this.page.total/this.page.pageSize>1){
+								this.page.isShow = true;
+							}else {
+								this.page.isShow = false;
+							}
+						}else {
+							this.$message.error({
+								message: msg.msg,
+								type: 'error',
+								showClose: true,
+								center: true,
+								duration:3000
+							});
+						}
+					}
+				);
+                /*this.Http.post('/api/user/list',{
                     searchName:this.search.username,
                     searchMobile:this.search.mobile,
                     pageSize:this.page.pageSize,
@@ -169,8 +207,8 @@
                     showClose: true,
                     center: true,
                     duration:3000
-                });
-                });
+					});
+                });*/
             },
             onSearch() {
                 this.getUserList('搜索成功！');

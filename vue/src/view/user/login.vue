@@ -1,5 +1,4 @@
 <template>
-
   <body class="signin">
     <div class="signinpanel">
       <div class="row">
@@ -28,7 +27,6 @@
             <input type="password" class="form-control pword m-b" v-model="password" placeholder="密码" />
             <!--<a href="">忘记密码了？</a>-->
             <a class="btn btn-success btn-block" @click="login">登录</a>
-            <a class="btn btn-success btn-block" @click="loginTwo">登录2</a>
           </form>
         </div>
       </div>
@@ -72,45 +70,7 @@ export default {
         });
         return false;
       }
-      this.Http.post("/user/login", {
-        username: this.username,
-        password: this.password
-      })
-        .then(res => {
-          if (res.success) {
-            this.Storage.set("username", res.data.username);
-            this.Storage.set("token", res.data.token);
-            this.Common.writeRouter(res.data.juris, this.$router);
-            this.$router.addRoutes(this.$router.options.routes);
-            this.$router.push({ path: "/index" });
-          } else {
-            this.$message({
-              message: res.msg,
-              type: "error",
-              showClose: true,
-              center: true,
-              duration: 3000
-            });
-          }
-        })
-        .catch(error => {
-          this.$router.push({ path: "/error" });
-          console.error(error);
-        });
-      /*this.$http.post(
-                        '/login',
-                        {
-                            username:this.username,
-                            password:this.password
-                        }
-                ).then(msg=>{
-
-                }).catch(err=>{
-
-                });*/
-    },
-    loginTwo() {
-      this.ajax(
+       this.ajax(
         "登录",
         {
           username: this.username,
@@ -135,7 +95,8 @@ export default {
           }
         }
       );
-    }
+    },
+    
   }
 };
 </script>

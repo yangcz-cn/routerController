@@ -1,5 +1,5 @@
 /**
- * Created by Yangcz on 2018/8/13.
+ * Created by Yangcz on 2018/8/13. 2018-10-16 17:20:38 废除，使用ajax文件
  */
 import axios from 'axios'
 class Http {

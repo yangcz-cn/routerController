@@ -121,7 +121,39 @@
             },
             getList(r = false){
                 this.loading = true;
-                this.Http.post('/juris/list',{
+				this.ajax(
+					"权限列表",
+					{
+					   state:this.state,
+						page:this.page.pageNum,
+						pageSize:this.page.pageSize,
+						sJurisTitle:this.search.name
+					},
+					resault => {
+					   if(resault.success){
+							this.loading = false;
+							if(r){
+								this.$message({
+									type:'success',
+									message:r,
+									center:true,
+									showClose:true,
+									duration:1000
+								});
+							}
+							this.jurisList = this.Common.dataToList(resault.data.rows);
+							this.page.total = resault.data.count;
+							if(this.page.total/this.page.pageSize>1){
+								this.page.isShow = true;
+							}else {
+								this.page.isShow = false;
+							}
+						}else {
+							this.$message({type:'waring', message:resault.msg, center:true, showClose:true, duration:3000});
+						}
+					}
+				);
+                /*this.Http.post('/api/juris/list',{
                     state:this.state,
                     page:this.page.pageNum,
                     pageSize:this.page.pageSize,
@@ -158,7 +190,7 @@
                         showClose:true,
                         duration:3000
                      });
-                });
+                });*/
             },
             onSearch(){
                 this.getList('搜索成功！');
