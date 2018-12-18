@@ -1,5 +1,9 @@
-import roleInterfaceModel from './roleInterfaceModel'
-import testInterfaceModel from './testInterfaceModel'
+import roleInterfaceModel from './roleInterfaceModel';
+import jurisInterfaceModel from './jurisInterfaceModel';
+import testInterfaceModel from './testInterfaceModel';
 
-let obj = Object.assign({}, roleInterfaceModel, testInterfaceModel);
+let obj = Object.assign({}, 
+roleInterfaceModel, 
+jurisInterfaceModel,
+testInterfaceModel);
 export default obj;

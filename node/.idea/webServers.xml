@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="7c21e330-0ee7-4f96-bb7e-289ee1676482" name="励熙科技">
+        <fileTransfer port="22" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="47ff8a8d-5cf2-408f-bd09-efbb9dc2eac2" name="玉石商城" url="http://94.191.45.82">
+        <fileTransfer host="94.191.45.82" port="22" accessType="SFTP" password="dfe7dfc3dfc4dfcddf92df92df92df92" username="root">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="e8bcd5dd-88c6-4923-9eb5-2d45da674ca9" name="李总实盘" url="http://118.25.178.213">
+        <fileTransfer host="118.25.178.213" port="22" accessType="SFTP" password="dfe6dfc3dfd0dfc2dfc5dfc4dfcddf92df92df92df92" username="root">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

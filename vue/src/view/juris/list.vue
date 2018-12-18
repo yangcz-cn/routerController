@@ -26,7 +26,7 @@
                                 :data="jurisList"
                                 @filter-change="filterChange"
                                 style="width: 100%"
-                                max-height="700">
+                                max-height="500">
                             <el-table-column
                                     prop="id"
                                     label="编号"
@@ -70,7 +70,16 @@
                                     label="操作"
                                     width="200">
                                 <template slot-scope="scope">
-                                    <el-button size="small" round><i class="fa fa-times-circle-o"></i>无效</el-button>
+								
+                                    <el-button size="small" round @click="onState(scope.row.id)">
+										<i :class="scope.row.state == '有效' ? 'fa fa-times-circle-o':'fa fa-check-circle-o'"></i>
+										{{scope.row.state === '无效'?'有效':'无效'}}
+									</el-button>
+									
+									<el-button size="small" round @click="onEdit(scope.row.id)">
+										<i class="fa fa-edit"></i>
+										编辑
+									</el-button>
                                 </template>
                             </el-table-column>
                         </el-table>
@@ -198,9 +207,6 @@
             onFlash(){
                 this.getList('刷新成功！');
             },
-            onAdd(){
-
-            },
             pageChange($event){
                 this.page.pageNum = $event;
                 this.getList();
@@ -217,6 +223,16 @@
                 }
                 this.getList('筛选成功');
             },
+			onAdd(){
+				this.$router.push({path:`/juris/add`});
+            },
+			onEdit(id){
+				
+				this.$router.push({name:`权限添加`,params:{id:id}});
+			},
+			onState(id){
+			
+			}
 
         }
     }

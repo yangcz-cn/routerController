@@ -219,6 +219,44 @@ class mysqlModel {
         });
 
     }
+    buildSave(table,v,conditions = false){
+        if (!table)
+            return 'table is not null!';
+        if(v.length<= 0)
+            return 'values is not null!';
+        let sql = '';
+        if(conditions){
+            sql  = 'Update `' + table + '` SET ';
+            let vArr = [];
+            for(let k in v){
+                vArr.push('`' + k + '` = ' + "'" + v[k] + "'");
+                 //'`' + k + '` = ' + "'" + v[k] + "'";
+            }
+            sql += vArr.join(',');
+            for (let item of conditions) {
+                if (!sql.includes('WHERE')) {
+                    sql += ' WHERE ';
+                } else {
+                    sql += ' AND ';
+                }
+                sql += `${item} = ?`;
+            }
+        }else {
+            sql = 'INSERT INTO `' + table + '` (';
+            let kArr = [],vArr = [];
+
+            for(let k in v){
+                kArr.push('`'+ k.replace(/`/g,'\`') +'`');
+                //console.log(v[k]);
+                vArr.push("'"+ v[k].toString().replace(/'/g,'\'') +"'");
+            }
+            sql += kArr.join(',') + ') VALUES( ' + vArr.join(',') + ') ';
+        }
+        return sql;
+    }
+    buildFindById(table){
+        return `SELECT * FROM ${table} WHERE id = ?`;
+    }
 
 }
 module.exports = new mysqlModel(mysql);

@@ -7890,3 +7890,10 @@ body.skin-3 {
         font-size: 12px
     }
 }
+
+/**
+自定义添加 2018年12月18日
+**/
+.red{
+    color: red;
+}

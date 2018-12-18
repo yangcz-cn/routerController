@@ -3,7 +3,7 @@
 /vue/node_modules
 
 
-
+.idea
 .git
 /nbproject/private/
 .gitignore

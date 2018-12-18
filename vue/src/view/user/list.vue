@@ -214,7 +214,7 @@
                 this.getUserList('搜索成功！');
             },
             onAddUser(){
-                console.log('aaaaaaaaddddddd')
+              router.push({path:`/user/add`});			  
             },
             onFlash(){
                 this.getUserList('刷新成功！');

@@ -196,7 +196,7 @@
                 this.getList('刷新成功！');
             },
             onAdd(){
-
+				Router.push({path:`/rote/add`});
             },
             pageChange($event){
                 this.page.pageNum = $event;
