@@ -4,7 +4,7 @@ const db = require('../model/mysql.js');
 const Tools = require('../tools/Tools.js');
 //const db = mysql.db;
 //const jurisSql = require('../model/juris.js');
-/* 状态码 n0100 - n0200 
+/* 本页功能状态码 n0100 - n0200
 2NNNN: 成功
 4NNNN: 逻辑错误
 5NNNN: 内部错误
@@ -42,10 +42,18 @@ router.post('/list',function(req,res,next){
 		(async ()=>{	
 			let rows = await db.query(db.buildListSql(table,conditions),v);
 			let c = await db.count(table,['state'],[body.state]);
-			res.json(Tools.successRet(20100,'查询成功',{count:c,rows:rows}));		
+			res.json(Tools.successRet(20100,'查询成功',{count:c,rows:rows}));
+			db.adminLog({
+				'uid':req.cookies.userId,
+				'type':2,
+				'action':'查看权限列表',
+				'data':JSON.stringify(body),
+				'ip':Tools.getClientIp(req),
+				'add_time':Tools.timestamp()
+			});
 		})();
 	}catch(err){
-		res.json(Tools.successRet(20100,err,{count:c,rows:rows}));
+		res.json(Tools.successRet(50100,err,{count:c,rows:rows}));
 	}
 });
 
@@ -63,7 +71,7 @@ router.post('/save',function(req,res,next){
 	let regx=/^\/\w/;
 	var rs=regx.test(body.path);
 	if(!rs){
-		res.json(Tools.failRet(20401,'权限路径有误！'));
+		res.json(Tools.failRet(40101,'权限路径有误！'));
 	}
 	let val = {
 		'name':body.name,
@@ -76,16 +84,32 @@ router.post('/save',function(req,res,next){
 		(async ()=>{
 			let flag = false;
 			if(body.id){
+				let old =  db.query(db.buildFindById(table),body.id);
 				let sql = db.buildSave(table,val,['id']);
-				//res.json(Tools.successRet(20101,'保存',{sql}));
 				flag = await db.query(sql,body.id);
+				db.adminLog({
+					'uid':req.cookies.userId,
+					'type':3,
+					'action':'修改权限id:'+body.id,
+					'data':JSON.stringify({oldData:old['0'],newData:val}),
+					'ip':Tools.getClientIp(req),
+					'add_time':Tools.timestamp()
+				});
 			}else{
 				flag = await db.querySql(db.buildSave(table,val));
+				db.adminLog({
+					'uid':req.cookies.userId,
+					'type':5,
+					'action':'新增数据',
+					'data':JSON.stringify(val),
+					'ip':Tools.getClientIp(req),
+					'add_time':Tools.timestamp()
+				});
 			}
 			if(flag){
 				res.json(Tools.successRet(20101,'保存成功',{}));
 			}else {
-				res.json(Tools.failRet(20502,'保存失败'));
+				res.json(Tools.failRet(50102,'保存失败'));
 			}
 		})();
 	}catch(err){
@@ -107,13 +131,57 @@ router.post('/byId',function(req,res,next){
 		(async ()=>{
 		let rows = await db.query(db.buildFindById(table),body.id);
 		if(rows){
-			res.json(Tools.successRet(20103,'获取成功',rows[0]));
+			res.json(Tools.successRet(20102,'获取成功',rows[0]));
+			db.adminLog({
+				'uid':req.cookies.userId,
+				'type':2,
+				'action':'查看权限id:'+body.id,
+				'data':'',
+				'ip':Tools.getClientIp(req),
+				'add_time':Tools.timestamp()
+			});
 		}else {
-			res.json(Tools.failRet(20503,'获取失败'));
+			res.json(Tools.failRet(50103,'获取失败'));
 		}
 	})();
 	}catch(err){
-		res.json(Tools.failRet(20503,err.message));
+		res.json(Tools.failRet(50104,err.message));
+	}
+});
+
+/**
+ * @author:yang cz
+ * post juris/upState listing. **/
+router.post('/upState',function(req,res,next){
+	//res.json(Tools.failRet(40100,'参数错误！'))
+	let body = Tools.post(req);
+	if(!body.id || !body.state){
+		res.json(Tools.failRet(40100,'参数错误！'));
+		return false;
+	}
+	let val = {
+		state:parseInt(body.state)
+	};
+	let table = 'router';
+	try{
+		(async ()=>{
+			let rows = await db.query(db.buildSave(table,val,['id']),body.id);
+		if(rows){
+			res.json(Tools.successRet(20103,'修改成功',rows[0]));
+			db.adminLog({
+				'uid':req.cookies.userId,
+				'type':3,
+				'action':'修改权限id:'+body.id+'的状态',
+				'data':JSON.stringify(body),
+				'ip':Tools.getClientIp(req),
+				'add_time':Tools.timestamp()
+			});
+		}else {
+			res.json(Tools.failRet(50105,'修改失败'));
+		}
+	})();
+	}catch(err){
+		res.json(Tools.failRet(50106,err.message));
 	}
 });
 

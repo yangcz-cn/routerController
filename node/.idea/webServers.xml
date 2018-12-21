@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="7c21e330-0ee7-4f96-bb7e-289ee1676482" name="励熙科技">
-        <fileTransfer port="22" accessType="SFTP">
+      <webServer id="7c21e330-0ee7-4f96-bb7e-289ee1676482" name="励熙科技" url="http://47.105.95.45">
+        <fileTransfer host="47.105.95.45" port="22" accessType="SFTP" password="dffbdfc3dfdfdf92df92df92df92df92df92df92df92" username="root">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
@@ -18,6 +18,27 @@
       </webServer>
       <webServer id="e8bcd5dd-88c6-4923-9eb5-2d45da674ca9" name="李总实盘" url="http://118.25.178.213">
         <fileTransfer host="118.25.178.213" port="22" accessType="SFTP" password="dfe6dfc3dfd0dfc2dfc5dfc4dfcddf92df92df92df92" username="root">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="c02e6db2-de57-4764-ae14-5ccc037b8f67" name="掌上交易" url="http://150.109.119.50">
+        <fileTransfer host="150.109.119.50" port="22" accessType="SFTP" password="dff3dfcbdfc4dfcddf92df92df92df92df92df92df92df92" username="root">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="f5041536-8c48-4a5c-9d31-f9f21f70bfd2" name="永盛国际" url="http://47.105.95.45">
+        <fileTransfer host="47.105.95.45" port="22" accessType="SFTP" password="dffbdfc3dfdfdf92df92df92df92df92df92df92df92" username="root">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="fd62fb33-6a3d-438c-b8a9-d2d419e73ff4" name="香港数据服务器" url="http://150.109.60.183">
+        <fileTransfer host="150.109.60.183" port="22" accessType="SFTP" password="dfe7dfc3dfc4dfcddf92df92df92df92df92df92df92df92" username="root">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>

@@ -247,15 +247,21 @@ class mysqlModel {
 
             for(let k in v){
                 kArr.push('`'+ k.replace(/`/g,'\`') +'`');
-                //console.log(v[k]);
                 vArr.push("'"+ v[k].toString().replace(/'/g,'\'') +"'");
             }
             sql += kArr.join(',') + ') VALUES( ' + vArr.join(',') + ') ';
         }
         return sql;
     }
-    buildFindById(table){
-        return `SELECT * FROM ${table} WHERE id = ?`;
+    buildFindById(table,findKey = '*'){
+        return `SELECT ${findKey} FROM ${table} WHERE id = ?`;
+    }
+    adminLog(val){
+        return new Promise((reslove,reject) => {
+                this.query(this.buildSave('admin_log',val)).then(
+                    resault=>reslove(resault)
+                ).catch(err=>reject(err));
+        });
     }
 
 }

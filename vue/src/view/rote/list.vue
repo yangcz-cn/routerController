@@ -26,23 +26,29 @@
                                 :data="jurisList"
                                 @filter-change="filterChange"
                                 style="width: 100%"
-                                max-height="700">
+                                max-height="500">
                             <el-table-column
                                     prop="id"
                                     label="编号"
-                                    width="100">
+                                    width="100"
+									align="center"
+									>
                             </el-table-column>
                             <el-table-column
                                     prop="name"
+									align="center"
                                     label="名称"
                                     width="120">
                             </el-table-column>
                             <el-table-column
+									align="center"
                                     prop="desc"
                                     label="描述"
+									width="300"
                                     >
                             </el-table-column>
                             <el-table-column
+									align="center"
                                     prop="state"
                                     label="状态"
                                     width="120"
@@ -63,9 +69,22 @@
                             <el-table-column
                                     fixed="right"
                                     label="操作"
-                                    width="200">
+									align="center"
+                                    >
                                 <template slot-scope="scope">
-                                    <el-button size="small" round><i class="fa fa-times-circle-o"></i>无效</el-button>
+									<el-button size="small" round @click="onState(scope.row.id,scope.row.state)">
+										<i :class="scope.row.state == '有效' ? 'fa fa-times-circle-o':'fa fa-check-circle-o'"></i>
+										{{scope.row.state === '无效'?'有效':'无效'}}
+									</el-button>
+									<el-button size="small" round @click="onEdit(scope.row.id)">
+									<i class="fa fa-edit"></i>
+									编辑
+									</el-button>
+									
+									<el-button size="small" round @click="onShowJuris(scope.row.id)">
+									<i class="fa fa-edit"></i>
+									权限
+									</el-button>
                                 </template>
                             </el-table-column>
                         </el-table>
@@ -196,7 +215,7 @@
                 this.getList('刷新成功！');
             },
             onAdd(){
-				Router.push({path:`/rote/add`});
+				this.$router.push({path:`/rote/add`});
             },
             pageChange($event){
                 this.page.pageNum = $event;
@@ -214,6 +233,61 @@
                 }
                 this.getList('筛选成功');
             },
+			onState(id,state){
+				if(state == '有效'){
+					state = 2;
+				}else{
+					state = 1;
+				}			 
+				this.ajax(
+					'角色状态',
+					{
+						'id':id,
+						'state':state
+					},
+					resault=>{
+						if(resault.success){
+							this.$message({
+								type:'success',
+								message:'修改成功',
+								center:true,
+								showClose:true,
+								duration:1000
+							 });
+							this.jurisList.map(val=>{
+								if(val.id == id){
+									if(state == 1){
+										val.state = '有效';
+									}else{
+										val.state = '无效';
+									}
+								}
+							});
+						}else{
+							this.$message({
+								type:'error',
+								message:resault.msg,
+								center:true,
+								showClose:true,
+								duration:3000
+							 });
+						
+						}
+					}
+				);
+			},
+			onEdit(id){
+				this.$router.push({path:`/rote/add`,query:{id:id}});
+			},
+			onShowJuris(id){
+				this.$message({
+								type:'error',
+								message:'开发中。。。',
+								center:true,
+								showClose:true,
+								duration:3000
+							 });
+			}
 
         }
     }

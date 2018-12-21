@@ -2,29 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0eaf93a-b56f-40af-a103-3936e8d3661f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node/node_modules/morgan/node_modules/basic-auth/HISTORY.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node/node_modules/morgan/node_modules/basic-auth/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node/node_modules/morgan/node_modules/basic-auth/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node/node_modules/morgan/node_modules/basic-auth/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node/node_modules/morgan/node_modules/basic-auth/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node/node_modules/morgan/node_modules/on-headers/HISTORY.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node/node_modules/morgan/node_modules/on-headers/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node/node_modules/morgan/node_modules/on-headers/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node/node_modules/morgan/node_modules/on-headers/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node/node_modules/morgan/node_modules/on-headers/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node/node_modules/morgan/node_modules/safe-buffer/.travis.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node/node_modules/morgan/node_modules/safe-buffer/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node/node_modules/morgan/node_modules/safe-buffer/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node/node_modules/morgan/node_modules/safe-buffer/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node/node_modules/morgan/node_modules/safe-buffer/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node/node_modules/morgan/node_modules/safe-buffer/test.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/node_modules/morgan/HISTORY.md" afterPath="$PROJECT_DIR$/node/node_modules/morgan/HISTORY.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/node_modules/morgan/LICENSE" afterPath="$PROJECT_DIR$/node/node_modules/morgan/LICENSE" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/node_modules/morgan/README.md" afterPath="$PROJECT_DIR$/node/node_modules/morgan/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/node_modules/morgan/index.js" afterPath="$PROJECT_DIR$/node/node_modules/morgan/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/node_modules/morgan/package.json" afterPath="$PROJECT_DIR$/node/node_modules/morgan/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/package-lock.json" afterPath="$PROJECT_DIR$/node/package-lock.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/package.json" afterPath="$PROJECT_DIR$/node/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/.idea/deployment.xml" afterPath="$PROJECT_DIR$/node/.idea/deployment.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/.idea/webServers.xml" afterPath="$PROJECT_DIR$/node/.idea/webServers.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/.idea/workspace.xml" afterPath="$PROJECT_DIR$/node/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/routes/juris.js" afterPath="$PROJECT_DIR$/node/routes/juris.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/routes/rote.js" afterPath="$PROJECT_DIR$/node/routes/rote.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vue/src/interface/jurisInterfaceModel.js" afterPath="$PROJECT_DIR$/vue/src/interface/jurisInterfaceModel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vue/src/interface/roleInterfaceModel.js" afterPath="$PROJECT_DIR$/vue/src/interface/roleInterfaceModel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vue/src/tools/Common.js" afterPath="$PROJECT_DIR$/vue/src/tools/Common.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vue/src/view/juris/add.vue" afterPath="$PROJECT_DIR$/vue/src/view/juris/add.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vue/src/view/juris/list.vue" afterPath="$PROJECT_DIR$/vue/src/view/juris/list.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vue/src/view/rote/list.vue" afterPath="$PROJECT_DIR$/vue/src/view/rote/list.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vue/src/view/user/list.vue" afterPath="$PROJECT_DIR$/vue/src/view/user/list.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vue/static/css/style.css" afterPath="$PROJECT_DIR$/vue/static/css/style.css" />
     </list>
     <ignored path="routerController.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,7 +34,7 @@
     <favorites_list name="routerController" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375" />
+    <leaf />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -85,11 +76,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope">
-        <subPane subId="Default" />
-        <subPane subId="Project Files" />
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -190,6 +176,11 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope">
+        <subPane subId="Default" />
+        <subPane subId="Project Files" />
+      </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -213,11 +204,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Remote Host" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -248,7 +239,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -256,7 +246,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -264,7 +253,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4918033">
           <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>

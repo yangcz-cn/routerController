@@ -7897,3 +7897,7 @@ body.skin-3 {
 .red{
     color: red;
 }
+.wrapper-content{
+	max-height:650px;
+	overflow-y: auto;
+}

@@ -3,4 +3,13 @@ export default {
   '权限列表':{url: '/api/juris/list',method: 'post'},
   '角色列表':{url: '/api/rote/list',method: 'post'},
   '用户列表':{url: '/api/user/list',method: 'post'},
+  '角色保存':{url: '/api/rote/save',method: 'post'},
+  '角色获取':{url: '/api/rote/byId',method: 'post'},
+  '角色状态':{url: '/api/rote/upState',method: 'post'},
+  '用户保存':{url: '/api/user/save',method: 'post'},
+  '手机号是否可用':{url: '/api/user/checkMobile',method: 'post'},
+  '用户名是否可用':{url: '/api/user/checkUsername',method: 'post'},
+  '角色选项卡':{url: '/api/rote/getSelect',method: 'post'},
+  '获取用户信息':{url: '/api/user/byId',method: 'post'},
+  '用户状态':{url: '/api/user/upState',method: 'post'},
 }

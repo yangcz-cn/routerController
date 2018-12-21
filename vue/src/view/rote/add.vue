@@ -4,7 +4,7 @@
             <div class="col-sm-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>权限{{this.id?'编辑':'添加'}} <small>  权限用于前端路由（带 <span class="red">*</span> 号为必填项）</small></h5>
+                        <h5>角色{{this.id?'编辑':'添加'}} <small>  角色用于用户的权限管理（带 <span class="red">*</span> 号为必填项）</small></h5>
                         <div class="ibox-tools">
                             <!--<a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
@@ -24,30 +24,24 @@
                         </div>
                     </div>
                     <div class="ibox-content">
-						<el-form :model="juris" :rules="rules" ref="juris" label-width="100px" class="demo-juris" v-loading="loading"
+						<el-form :model="rote" :rules="rules" ref="rote" label-width="100px" class="demo-rote" v-loading="loading"
                                 element-loading-text="保存中..."
 								>
-							  <el-form-item label="权限名称" prop="name">
+							  <el-form-item label="角色名称" prop="name">
 								<el-input 
-								v-model="juris.name"
-								placeholder="请输入权限名称"
+								v-model="rote.name"
+								placeholder="请输入角色名称"
 								></el-input>
 							  </el-form-item>
-							  <el-form-item label="权限路径" prop="path">
-								<el-input 
-								v-model="juris.path"
-								placeholder="请输入基于根的权限路径"
-								></el-input>
-							  </el-form-item>
-							  <el-form-item label="权限描述">
+							  <el-form-item label="角色描述">
 								<el-input 
 								type="textarea"
 								:rows="2"
-								v-model="juris.desc" placeholder="请输入关于此权限的描述" ></el-input>
+								v-model="rote.desc" placeholder="请输入关于此角色的描述" ></el-input>
 							  </el-form-item>
 							  <el-form-item label="是否有效">
 								<el-switch
-								  v-model="juris.state"
+								  v-model="rote.state"
 								  active-color="#13ce66"
 								  inactive-color="#ff4949"
 								  active-text="有效"
@@ -56,8 +50,8 @@
 								</el-switch>
 							  </el-form-item>
 							  <el-form-item>
-								<el-button type="primary" @click="submitForm('juris')"><i class="fa fa-save"></i>保存</el-button>
-								<el-button @click="resetForm('juris')">重置</el-button>
+								<el-button type="primary" @click="submitForm('rote')"><i class="fa fa-save"></i>保存</el-button>
+								<el-button @click="resetForm('rote')">重置</el-button>
 							  </el-form-item>
 						</el-form>
                     </div>
@@ -73,7 +67,7 @@ export default {
       return {
 		id:false,
 		loading:false,
-        juris: {
+        rote: {
           name: '',
           path: '',
           desc: '',
@@ -81,14 +75,9 @@ export default {
         },
         rules: {
           name: [
-            { required: true, message: '请输入权限名称', trigger: 'blur' },
+            { required: true, message: '请输入角色称', trigger: 'blur' },
             { min: 2, max: 10, message: '长度在 2 到 10 个字符', trigger: 'blur' },
 			{ min: 2, max: 10, message: '长度在 2 到 10 个字符', trigger: 'change' }
-          ],
-          path: [
-            { required: true, message: '请输入基于根的权限路径', trigger: 'blur' },
-			{ min: 1, max: 20, message: '长度在 1 到 20 个字符', trigger: 'blur' },
-			{ min: 1, max: 20, message: '长度在 1 到 20 个字符', trigger: 'change' }
           ],
         }
       };
@@ -102,7 +91,7 @@ export default {
 		if(this.id){
 		this.loading = true;
 			this.ajax(
-				'权限获取',
+				'角色获取',
 				{
 					id:this.id
 				},
@@ -110,13 +99,12 @@ export default {
 					this.loading = false;
 					console.log(resault);
 					if(resault.success){
-						this.juris.name = resault.data.name;
-						this.juris.path = resault.data.path;
-						this.juris.desc = resault.data.desc;
+						this.rote.name = resault.data.name;
+						this.rote.desc = resault.data.desc;
 						if(resault.data.state == '1'){
-							this.juris.state = true;
+							this.rote.state = true;
 						}else{
-							this.juris.state = false;
+							this.rote.state = false;
 						}
 					}
 				}
@@ -128,29 +116,15 @@ export default {
         this.$refs[formName].validate((valid) => {
           if (valid) {
 			this.loading = true;
-			let regx=/^\/\w/;
-			var rs=regx.test(this.juris.path);
-			if(!rs){
-				this.$message({
-					type:'error',
-					message:'权限路径有误！',
-					center:true,
-					showClose:true,
-					duration:1000
-                });
-				return false;
-			}
             this.ajax(
-				'权限保存',
+				'角色保存',
 				{
 					id:this.id,
-					name:this.juris.name,
-					path:this.juris.path,
-					desc:this.juris.desc,
-					state:this.juris.state
+					name:this.rote.name,
+					desc:this.rote.desc,
+					state:this.rote.state
 				},
 				resault=>{
-				console.log(resault);
 					this.loading = false;
 					if(resault.success){
 						this.$message({
@@ -160,14 +134,14 @@ export default {
 							showClose:true,
 							duration:1000
 						});
-						this.$router.push({path:'/juris/list'});
+						this.$router.push({path:'/rote/list'});
 					}else{
 						this.$message({
 							type:'error',
 							message:resault.msg,
 							center:true,
 							showClose:true,
-							duration:1000
+							duration:3000
 						});
 					}
 				}
@@ -178,7 +152,7 @@ export default {
                 message:'请按要求补全数据',
                 center:true,
                 showClose:true,
-                duration:1000
+                duration:3000
                 });
             return false;
           }

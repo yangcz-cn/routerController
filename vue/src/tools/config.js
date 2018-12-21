@@ -2,6 +2,11 @@
  * Created by Administrator on 2018/8/13.
  */
 const config = {
+	notfind:'---',
+	userSource:{
+		'1':'后台添加',
+		'2':'前台注册'
+	},
     globalRouters:[
         '/',
         '/login',

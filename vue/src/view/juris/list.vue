@@ -71,7 +71,7 @@
                                     width="200">
                                 <template slot-scope="scope">
 								
-                                    <el-button size="small" round @click="onState(scope.row.id)">
+                                    <el-button size="small" round @click="onState(scope.row.id,scope.row.state)">
 										<i :class="scope.row.state == '有效' ? 'fa fa-times-circle-o':'fa fa-check-circle-o'"></i>
 										{{scope.row.state === '无效'?'有效':'无效'}}
 									</el-button>
@@ -107,7 +107,7 @@
             return {
                 loading:false,
                 jurisList:[],
-                state:'all',
+                state:'1',
                 page:{
                     isShow:false,
                     total:0,
@@ -125,7 +125,6 @@
         },
         methods:{
             init(){
-
                 this.getList();
             },
             getList(r = false){
@@ -227,11 +226,50 @@
 				this.$router.push({path:`/juris/add`});
             },
 			onEdit(id){
-				
-				this.$router.push({name:`权限添加`,params:{id:id}});
+				this.$router.push({path:`/juris/add`,query:{id:id}});
 			},
-			onState(id){
-			
+			onState(id,state){
+				if(state == '有效'){
+					state = 2;
+				}else{
+					state = 1;
+				}			 
+				this.ajax(
+					'权限状态',
+					{
+						'id':id,
+						'state':state
+					},
+					resault=>{
+						if(resault.success){
+							this.$message({
+								type:'success',
+								message:'修改成功',
+								center:true,
+								showClose:true,
+								duration:1000
+							 });
+							this.jurisList.map(val=>{
+								if(val.id == id){
+									if(state == 1){
+										val.state = '有效';
+									}else{
+										val.state = '无效';
+									}
+								}
+							});
+						}else{
+							this.$message({
+								type:'error',
+								message:resault.msg,
+								center:true,
+								showClose:true,
+								duration:3000
+							 });
+						
+						}
+					}
+				);
 			}
 
         }

@@ -9,6 +9,13 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="掌上交易">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="李总实盘">
         <serverdata>
           <mappings>
@@ -16,7 +23,21 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="永盛国际">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="玉石商城">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="香港数据服务器">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
